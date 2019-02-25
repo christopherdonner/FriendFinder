@@ -10,13 +10,11 @@ module.exports=function(app){
         console.log("post")
         friendData.push(res)
         for(i=0;i<friendData.length;i++){
-
+            var totalDifference
+            for(j=0;j<10;j++){
+                friendData.scores[i]
+            }
         }
-        $("#match-name").text(data.name);
-          $("#match-img").attr("src", data.photo);
-
-          // Show the modal with the best match
-          $("#results-modal").modal("toggle");
-
-        });
-      } 
+        
+    })
+}
