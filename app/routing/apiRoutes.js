@@ -11,14 +11,24 @@ module.exports=function(app){
         console.log("post")
         // console.log(res)
         friendArray.push(friendData)
-        friendArray.push(res)
-        // res.json(friendArray);
-            for(i=0;i<friendArray.length;i++){
-                for(j=0;j<friendArray[i].score[j];i++){
-                    
+        friendArray.push(req.body)
+        console.log(friendArray)
+        console.log(friendArray[0].scores[0])
+        res.friendArray;
+        var temp
+        var friendVariance=[]
+        for(i=0;i<friendArray.length;i++){
+                for(j=0;j<friendArray[i].scores[j];i++){
+                    if(friendArray[i].scores[j]!=req.body.scores[j]){
+                        temp=friendArray[i].scores[j]-req.body.scores[j]
+                        if(temp<0){temp=temp*(-1)}
+                        friendVariance[i]+=temp    
+                    }
                 }
             }
         res.json(true);
+        return;
+
     })
 
 }
