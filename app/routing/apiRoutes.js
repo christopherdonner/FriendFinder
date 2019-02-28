@@ -7,9 +7,9 @@ module.exports = function (app) {
         res.json(friendData)
     });
 
-    app.post("/api/friends", function (req, res) 
+    app.post("/api/friends", function (req, res)  // this is the post
     {
-        friendArray.push(friendData)
+        friendArray.push(friendData)        // this is the call back that is failing, causing the HTTP 500 response
         friendArray.push(req.body)
         res.friendArray;
         var temp
@@ -22,8 +22,8 @@ module.exports = function (app) {
             console.log(friendArray[i].scores.length)
             for (j = 0; j < 10; i++) 
             {
-                console.log(friendArray[i].scores[j])
-                if (friendArray[i].scores[j] != req.body.scores[j]) 
+                console.log(friendArray[i].scores[j])   // this console log appears to come back as an integer value
+                if (friendArray[i].scores[j] != req.body.scores[j]) // however, this returns undefined, causing the crash
                 {
                     temp = friendArray[i].scores[j] - req.body.scores[j]
                     if (temp < 0) { temp = temp * (-1) }
