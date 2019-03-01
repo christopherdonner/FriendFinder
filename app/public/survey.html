@@ -222,7 +222,8 @@ $("#submitButton").on("click", function(event) {
           $("#match-name").text(data.name);
           $("#match-img").attr("src", data.photo);
 
-          $("#results-modal").modal("toggle");
+          alert(`your match is ${data.name}!`)  
+          //$("#results-modal").modal("toggle");
 
         });
       } else {
