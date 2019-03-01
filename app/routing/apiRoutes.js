@@ -11,7 +11,7 @@ module.exports = function (app) {
     
     {
         friendArray.push(friendData)
-        // friendArray.push(req.body)
+        friendArray.push(req.body)
         res.friendArray;
         var match;
         var matchVariance = 0;
