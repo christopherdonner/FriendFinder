@@ -8,39 +8,29 @@ module.exports = function (app) {
     });
 
     app.post("/api/friends", function (req, res) 
+    
     {
         friendArray.push(friendData)
-        friendArray.push(req.body)
+        // friendArray.push(req.body)
         res.friendArray;
-        console.log(friendArray)
-        var temp
-        var currentFriendVariance = 0
-        var tempfriendVariance = 0
-        var matchName
-        var matchPhoto
-        console.log(req.body.scores[0])
-        for (var i = 0; i < friendArray.length; i++) 
-        {
-            console.log(friendArray[i].scores.length)
-            for (j = 0; j < 10; i++) 
-            {
-                console.log(friendArray[i].scores[j])
-                console.log(req.body)
-                if (friendArray[i].scores[j] !== req.body.scores[j]) 
-                {
-                    temp = friendArray[i].scores[j] - req.body.scores[j]
-                    if (temp < 0) { temp = temp * (-1) }
-                    tempfriendVariance = tempfriendVariance+temp
-                }
-                if (tempfriendVariance > currentFriendVariance) 
-                {
-                    matchName = req.body.name;
-                    matchPhoto = req.body.photo;
-                }
-            }
-            res.json({name: matchName,photo:matchPhoto});
-            return;
-        }
+        var match;
+        var matchVariance = 0;
 
-})
-}
+        for(i=0; i<friendArray.length;i++){
+            var temp = 0;
+
+            for(j=0;j<friendArray[i].scores.length;j++){
+                temp +=(friendArray[i].scores[j] - req.body.scores[j]);
+            }
+            if(temp < matchVariance){
+                matchVariance = temp;
+                match = friendArray[i]
+                console.log(match)
+            }
+        }
+        friendArray.push(req.body);
+
+        res.json(match);
+    })
+
+    }
